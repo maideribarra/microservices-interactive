@@ -155,6 +155,68 @@
         Honek tolerantzia eta resilentzia beharra erakusten du.
       </div>
     </div>
+	<section class="screen" id="aws">
+
+  <h2>☁️ AWS / Mikrozerbitzuen Arkitektura (simulazioa)</h2>
+
+  <p>
+    Sakatu nodoetan eta ikusi sistemaren portaera.
+    “Request” animazio bat simulatzen da.
+  </p>
+
+  <div class="aws-diagram">
+
+    <div class="node frontend" onclick="showNode('Frontend')">
+      Frontend
+    </div>
+
+    <div class="arrow" id="a1">⬇</div>
+
+    <div class="node gateway" onclick="showNode('API Gateway')">
+      API Gateway
+    </div>
+
+    <div class="arrow" id="a2">⬇</div>
+
+    <div class="row">
+
+      <div class="node service" id="users" onclick="showNode('Users Service')">
+        Users
+      </div>
+
+      <div class="node service" id="payments" onclick="showNode('Payments Service')">
+        Payments
+      </div>
+
+      <div class="node service" id="notify" onclick="showNode('Notifications Service')">
+        Notifications
+      </div>
+
+    </div>
+
+    <div class="arrow" id="a3">⬇</div>
+
+    <div class="node db" onclick="showNode('Database')">
+      Database
+    </div>
+
+  </div>
+
+  <!-- REQUEST ANIMATION -->
+  <div class="request" id="request">
+    🔄 Request: — travelling...
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="info" id="awsInfo">
+    Sakatu nodo bat informazioa ikusteko
+  </div>
+
+  <button onclick="failPayments()">
+    ⚠ Simulatu errorea (Payments)
+  </button>
+
+</section>
 
     <button onclick="go(6)">Jarraitu</button>
   </section>
@@ -380,6 +442,64 @@
 </div>
 
 <style>
+.aws-diagram{
+  text-align:center;
+  margin-top:20px;
+}
+
+.node{
+  padding:14px;
+  border-radius:12px;
+  margin:10px auto;
+  width:200px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.frontend{ background:#bfdbfe; }
+.gateway{ background:#c7d2fe; }
+.service{ background:#d1fae5; display:inline-block; margin:10px; width:150px; }
+.db{ background:#fde68a; }
+
+.row{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.arrow{
+  font-size:22px;
+  animation:move 1.5s infinite;
+}
+
+@keyframes move{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(5px);}
+  100%{transform:translateY(0);}
+}
+
+.request{
+  margin-top:20px;
+  background:#111827;
+  color:white;
+  padding:12px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.info{
+  margin-top:15px;
+  background:#f3f4f6;
+  padding:15px;
+  border-radius:12px;
+}
+
+.fail{
+  background:#ef4444 !important;
+  color:white;
+}
 .image-container{
   margin-top:20px;
   text-align:center;
@@ -633,6 +753,37 @@ function runPost(){
   "endpoint": "/users",
   "status": "User created successfully"
 }`;
+}
+
+function showNode(name){
+
+  document.getElementById("awsInfo").innerText =
+    "Nodo: " + name +
+    "\n\nHemen sistemaren zati honek funtzionatzen du.";
+
+  document.getElementById("request").innerText =
+    "🔄 Request: " + name + " → processing...";
+}
+
+function failPayments(){
+
+  const payments = document.getElementById("payments");
+
+  payments.classList.toggle("fail");
+
+  if(payments.classList.contains("fail")){
+    document.getElementById("awsInfo").innerText =
+      "⚠ Payments Service FAIL\n\nSistemaren zati hau erori da, baina beste zerbitzuak funtzionatzen jarraitzen dute (resilientzia).";
+
+    document.getElementById("request").innerText =
+      "❌ Request failed at Payments Service";
+  } else {
+    document.getElementById("awsInfo").innerText =
+      "Payments Service berriz martxan dago.";
+
+    document.getElementById("request").innerText =
+      "🔄 Sistema normal";
+  }
 }
 
 </script>
