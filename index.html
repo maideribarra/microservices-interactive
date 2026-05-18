@@ -77,6 +77,31 @@
     <p>
       Sistema txiki eta independenteetan banatzen da.
     </p>
+	<h3>📊 Arkitekturaren ikuspegi orokorra</h3>
+
+<div class="diagram">
+
+  <div class="node frontend">Frontend</div>
+
+  <div class="arrow">⬇</div>
+
+  <div class="node gateway">API Gateway</div>
+
+  <div class="arrow">⬇</div>
+
+  <div class="row">
+
+    <div class="node service">Users Service</div>
+    <div class="node service">Payments Service</div>
+    <div class="node service">Notifications Service</div>
+
+  </div>
+
+  <div class="arrow">⬇</div>
+
+  <div class="node db">Database</div>
+
+</div>
 
     <div class="services">
       <div onclick="toggle(this)">👤 Users Service
@@ -224,7 +249,50 @@
 </div>
 
 <style>
+.diagram{
+  margin-top:25px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
 
+.node{
+  padding:14px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  width:220px;
+}
+
+.frontend{
+  background:#bfdbfe;
+}
+
+.gateway{
+  background:#c7d2fe;
+}
+
+.service{
+  background:#d1fae5;
+  width:180px;
+}
+
+.db{
+  background:#fde68a;
+}
+
+.row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.arrow{
+  font-size:22px;
+  color:#374151;
+}
 #microservices-deep{
   font-family:Arial;
   max-width:900px;
