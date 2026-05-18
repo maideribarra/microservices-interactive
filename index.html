@@ -578,4 +578,31 @@ function toggle(el){
       : 'block';
 }
 
+function runGet(){
+
+  document.getElementById("statusBox").innerText =
+    "HTTP Status: 200 OK";
+
+  document.getElementById("responseBox").innerText = `{
+  "method": "GET",
+  "endpoint": "/users",
+  "data": [
+    { "id": 1, "name": "Ane" },
+    { "id": 2, "name": "Jon" }
+  ]
+}`;
+}
+
+function runPost(){
+
+  document.getElementById("statusBox").innerText =
+    "HTTP Status: 201 Created";
+
+  document.getElementById("responseBox").innerText = `{
+  "method": "POST",
+  "endpoint": "/users",
+  "status": "User created successfully"
+}`;
+}
+
 </script>
