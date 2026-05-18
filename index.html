@@ -224,8 +224,125 @@
       </div>
     </div>
 
-    <button onclick="go(8)">Amaiera</button>
+    <button onclick="go(10)">Zein tresna erabili mikrozerbitzuen arkitektura erabiltzeko?</button>
   </section>
+  <section class="screen" id="s10">
+
+  <h2>🧪 Postman eta APIen probaketa</h2>
+
+  <p>
+    Postman APIak probatzeko eta ulertzeko tresna profesionala da.
+    Garatzaileek APIen funtzionamendua aztertzeko erabiltzen dute.
+  </p>
+
+  <div class="postman-grid">
+
+    <div class="postman-card">
+      <h3>📥 Informazioa eskuratu</h3>
+      <p>GET eskaerak erabiltzen dira zerbitzaritik datuak lortzeko.</p>
+    </div>
+
+    <div class="postman-card">
+      <h3>📤 Datuak bidali</h3>
+      <p>POST eskaerak erabiltzen dira zerbitzariari informazioa bidaltzeko.</p>
+    </div>
+
+  </div>
+
+  <div class="postman-info">
+
+    <h3>🧰 Postman - API tresna profesionala</h3>
+
+    <ul>
+      <li>APIak probatu, garatu eta dokumentatzeko erabiltzen da</li>
+      <li>Garatzaileen lan-fluxua errazten du</li>
+      <li>Collections bidez eskaerak antolatzen ditu</li>
+      <li>Autentifikazioa (OAuth, Bearer Token)</li>
+      <li>Monitorizazioa eta analisia</li>
+      <li>Doako bertsioa + funtzio aurreratuak</li>
+    </ul>
+
+  </div>
+
+  <h3>🚦 HTTP Egoera Kodeak</h3>
+
+  <div class="status-grid">
+
+    <div class="status ok">
+      <h4>200</h4>
+      <p>Eskaria ondo burutu da</p>
+    </div>
+
+    <div class="status bad">
+      <h4>400</h4>
+      <p>Eskaria baliogabea da</p>
+    </div>
+
+    <div class="status warn">
+      <h4>404</h4>
+      <p>Baliabidea ez da aurkitu</p>
+    </div>
+
+    <div class="status error">
+      <h4>500</h4>
+      <p>Zerbitzariaren errorea</p>
+    </div>
+
+  </div>
+
+  <button onclick="go(9)">Froga ezazu Postman!</button>
+
+</section>
+  
+  <section class="screen" id="s9">
+
+  <h2>🧪 Postman Simulator (API test environment)</h2>
+
+  <p>
+    APIak probatzeko ingurune sinplifikatu bat da.
+    GET eta POST eskaerak simulatzen dira eta erantzunak ikus daitezke.
+  </p>
+
+  <!-- BOTONES -->
+  <div class="pm-buttons">
+
+    <button onclick="runGet()">📥 GET Request</button>
+    <button onclick="runPost()">📤 POST Request</button>
+
+  </div>
+
+  <!-- STATUS -->
+  <div class="pm-status" id="statusBox">
+    HTTP Status: —
+  </div>
+
+  <!-- RESPONSE -->
+  <div class="pm-response">
+    <h3>📦 Response</h3>
+    <pre id="responseBox">
+{
+  "message": "Sakatu GET edo POST"
+}
+    </pre>
+  </div>
+
+  <!-- INFO -->
+  <div class="pm-info">
+
+    <h3>🧰 Zer egiten du Postmanek?</h3>
+
+    <ul>
+      <li>APIak probatzeko erabiltzen da</li>
+      <li>Request eta response-ak aztertzen dira</li>
+      <li>Backend garapena errazten du</li>
+      <li>Automatizazio eta testak sortzeko aukera</li>
+    </ul>
+
+  </div>
+
+  <button onclick="go(8)">Jarraitu</button>
+
+</section>
 
   <!-- FINAL -->
   <section class="screen" id="s8">
@@ -249,6 +366,93 @@
 </div>
 
 <style>
+.postman-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.postman-card{
+  background:#e0f2fe;
+  padding:15px;
+  border-radius:12px;
+}
+
+.postman-info{
+  margin-top:25px;
+  background:#f3f4f6;
+  padding:15px;
+  border-radius:12px;
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+  margin-top:20px;
+}
+
+.status{
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  font-weight:bold;
+  color:white;
+}
+
+.status h4{
+  margin:0;
+  font-size:20px;
+}
+
+.ok{ background:#22c55e; }
+.bad{ background:#f59e0b; }
+.warn{ background:#f97316; }
+.error{ background:#ef4444; }
+.pm-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.pm-buttons button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.pm-status{
+  margin-top:15px;
+  padding:12px;
+  background:#111827;
+  color:white;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.pm-response{
+  margin-top:20px;
+  background:#f3f4f6;
+  padding:15px;
+  border-radius:12px;
+}
+
+pre{
+  margin:0;
+  white-space:pre-wrap;
+}
+
+.pm-info{
+  margin-top:20px;
+  background:#e0f2fe;
+  padding:15px;
+  border-radius:12px;
+}
 .diagram{
   margin-top:25px;
   text-align:center;
